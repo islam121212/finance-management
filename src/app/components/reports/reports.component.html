@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="mt-4">Reports</h1>
+
+      <!-- Search Section (Optional) -->
+      <div class="mb-4">
+        <input type="text" [(ngModel)]="searchTerm" class="form-control" placeholder="Search for reports...">
+      </div>
+
+      <!-- Report Table -->
+      <div class="card">
+        <div class="card-header">
+          Report on Bonuses
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Reason</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let report of reports | filter: searchTerm">
+                <td>{{ report.title }}</td>
+                <td>{{ report.reason }}</td>
+                <td>{{ report.amount | currency }}</td>
+                <td>{{ report.status }}</td>
+                <td>{{ report.date | date: 'shortDate' }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
